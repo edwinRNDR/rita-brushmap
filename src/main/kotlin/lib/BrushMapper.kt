@@ -17,7 +17,7 @@ import kotlin.math.max
 class BrushMapper(val multisample: BufferMultisample = BufferMultisample.Disabled) : Extension {
     override var enabled: Boolean = true
 
-    var paintMode = false
+    var paintMode = true
 
     var uvmapFile = "data/brushmap.exr"
 
@@ -29,7 +29,7 @@ class BrushMapper(val multisample: BufferMultisample = BufferMultisample.Disable
     private var resolvedColorBuffer: ColorBuffer? = null
 
     var sourceAnchor = Vector2.ZERO
-    var targetAnchor: Vector2? = null
+    var targetAnchor =  Vector2.ZERO
     var mousePosition = Vector2.ZERO
     var painting = false
     val uvmapper = UVMap()
@@ -123,7 +123,7 @@ class BrushMapper(val multisample: BufferMultisample = BufferMultisample.Disable
             mousePosition = it.position
             if (!paintMode) {
                 sourceAnchor = it.position
-                targetAnchor = null
+                //targetAnchor = null
             } else {
                 painting = true
                 if (targetAnchor == null) {
